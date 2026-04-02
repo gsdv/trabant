@@ -1,0 +1,611 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CC0000012F79BEAE00852A3A /* NIOCore in Frameworks */ = {isa = PBXBuildFile; productRef = BB0000012F79BEAE00852A3A /* NIOCore */; };
+		CC0000022F79BEAE00852A3A /* NIOPosix in Frameworks */ = {isa = PBXBuildFile; productRef = BB0000022F79BEAE00852A3A /* NIOPosix */; };
+		CC0000032F79BEAE00852A3A /* NIOHTTP1 in Frameworks */ = {isa = PBXBuildFile; productRef = BB0000032F79BEAE00852A3A /* NIOHTTP1 */; };
+		CC0000042F79BEAE00852A3A /* NIOFoundationCompat in Frameworks */ = {isa = PBXBuildFile; productRef = BB0000042F79BEAE00852A3A /* NIOFoundationCompat */; };
+		CC0000052F79BEAE00852A3A /* NIOSSL in Frameworks */ = {isa = PBXBuildFile; productRef = BB0000052F79BEAE00852A3A /* NIOSSL */; };
+		CC0000062F79BEAE00852A3A /* X509 in Frameworks */ = {isa = PBXBuildFile; productRef = BB0000062F79BEAE00852A3A /* X509 */; };
+		CC0000072F79BEAE00852A3A /* Crypto in Frameworks */ = {isa = PBXBuildFile; productRef = BB0000072F79BEAE00852A3A /* Crypto */; };
+		CC0000082F79BEAE00852A3A /* SwiftASN1 in Frameworks */ = {isa = PBXBuildFile; productRef = BB0000082F79BEAE00852A3A /* SwiftASN1 */; };
+		CC0000092F79BEAE00852A3A /* NIOHTTP2 in Frameworks */ = {isa = PBXBuildFile; productRef = BB0000092F79BEAE00852A3A /* NIOHTTP2 */; };
+		F10000012F79BEAE00852A3A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F10000022F79BEAE00852A3A /* XCTest.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F10000032F79BEAE00852A3A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E5F851A42F79BEAE00852A3A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E5F851AB2F79BEAE00852A3A;
+			remoteInfo = Trabant;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E5F851AC2F79BEAE00852A3A /* Trabant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trabant.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F10000022F79BEAE00852A3A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = System/Library/Frameworks/XCTest.framework; sourceTree = SDKROOT; };
+		F10000042F79BEAE00852A3A /* TrabantTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrabantTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		E5F851AE2F79BEAE00852A3A /* Trabant */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Trabant;
+			sourceTree = "<group>";
+		};
+		F10000052F79BEAE00852A3A /* TrabantTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TrabantTests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E5F851A92F79BEAE00852A3A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC0000012F79BEAE00852A3A /* NIOCore in Frameworks */,
+				CC0000022F79BEAE00852A3A /* NIOPosix in Frameworks */,
+				CC0000032F79BEAE00852A3A /* NIOHTTP1 in Frameworks */,
+				CC0000042F79BEAE00852A3A /* NIOFoundationCompat in Frameworks */,
+				CC0000052F79BEAE00852A3A /* NIOSSL in Frameworks */,
+				CC0000062F79BEAE00852A3A /* X509 in Frameworks */,
+				CC0000072F79BEAE00852A3A /* Crypto in Frameworks */,
+				CC0000082F79BEAE00852A3A /* SwiftASN1 in Frameworks */,
+				CC0000092F79BEAE00852A3A /* NIOHTTP2 in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F10000062F79BEAE00852A3A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F10000012F79BEAE00852A3A /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E5F851A32F79BEAE00852A3A = {
+			isa = PBXGroup;
+			children = (
+				E5F851AE2F79BEAE00852A3A /* Trabant */,
+				F10000052F79BEAE00852A3A /* TrabantTests */,
+				E5F851AD2F79BEAE00852A3A /* Products */,
+				E5F854462F7C94BE00852A3A /* Recovered References */,
+			);
+			sourceTree = "<group>";
+		};
+		E5F851AD2F79BEAE00852A3A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E5F851AC2F79BEAE00852A3A /* Trabant.app */,
+				F10000042F79BEAE00852A3A /* TrabantTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E5F854462F7C94BE00852A3A /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				F10000022F79BEAE00852A3A /* XCTest.framework */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E5F851AB2F79BEAE00852A3A /* Trabant */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E5F851B72F79BEB000852A3A /* Build configuration list for PBXNativeTarget "Trabant" */;
+			buildPhases = (
+				E5F851A82F79BEAE00852A3A /* Sources */,
+				E5F851A92F79BEAE00852A3A /* Frameworks */,
+				E5F851AA2F79BEAE00852A3A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				E5F851AE2F79BEAE00852A3A /* Trabant */,
+			);
+			name = Trabant;
+			packageProductDependencies = (
+				BB0000012F79BEAE00852A3A /* NIOCore */,
+				BB0000022F79BEAE00852A3A /* NIOPosix */,
+				BB0000032F79BEAE00852A3A /* NIOHTTP1 */,
+				BB0000042F79BEAE00852A3A /* NIOFoundationCompat */,
+				BB0000052F79BEAE00852A3A /* NIOSSL */,
+				BB0000062F79BEAE00852A3A /* X509 */,
+				BB0000072F79BEAE00852A3A /* Crypto */,
+				BB0000082F79BEAE00852A3A /* SwiftASN1 */,
+				BB0000092F79BEAE00852A3A /* NIOHTTP2 */,
+			);
+			productName = Trabant;
+			productReference = E5F851AC2F79BEAE00852A3A /* Trabant.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F10000072F79BEAE00852A3A /* TrabantTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F100000D2F79BEAE00852A3A /* Build configuration list for PBXNativeTarget "TrabantTests" */;
+			buildPhases = (
+				F10000082F79BEAE00852A3A /* Sources */,
+				F10000062F79BEAE00852A3A /* Frameworks */,
+				F10000092F79BEAE00852A3A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F100000C2F79BEAE00852A3A /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				F10000052F79BEAE00852A3A /* TrabantTests */,
+			);
+			name = TrabantTests;
+			packageProductDependencies = (
+			);
+			productName = TrabantTests;
+			productReference = F10000042F79BEAE00852A3A /* TrabantTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E5F851A42F79BEAE00852A3A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2600;
+				LastUpgradeCheck = 2600;
+				TargetAttributes = {
+					E5F851AB2F79BEAE00852A3A = {
+						CreatedOnToolsVersion = 26.0;
+					};
+					F10000072F79BEAE00852A3A = {
+						CreatedOnToolsVersion = 26.0;
+						TestTargetID = E5F851AB2F79BEAE00852A3A;
+					};
+				};
+			};
+			buildConfigurationList = E5F851A72F79BEAE00852A3A /* Build configuration list for PBXProject "Trabant" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E5F851A32F79BEAE00852A3A;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				AA0000012F79BEAE00852A3A /* XCRemoteSwiftPackageReference "swift-nio" */,
+				AA0000022F79BEAE00852A3A /* XCRemoteSwiftPackageReference "swift-nio-ssl" */,
+				AA0000032F79BEAE00852A3A /* XCRemoteSwiftPackageReference "swift-certificates" */,
+				AA0000042F79BEAE00852A3A /* XCRemoteSwiftPackageReference "swift-crypto" */,
+				AA0000052F79BEAE00852A3A /* XCRemoteSwiftPackageReference "swift-asn1" */,
+				AA0000062F79BEAE00852A3A /* XCRemoteSwiftPackageReference "swift-nio-http2" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = E5F851AD2F79BEAE00852A3A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E5F851AB2F79BEAE00852A3A /* Trabant */,
+				F10000072F79BEAE00852A3A /* TrabantTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E5F851AA2F79BEAE00852A3A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F10000092F79BEAE00852A3A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E5F851A82F79BEAE00852A3A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F10000082F79BEAE00852A3A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F100000C2F79BEAE00852A3A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E5F851AB2F79BEAE00852A3A /* Trabant */;
+			targetProxy = F10000032F79BEAE00852A3A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		E5F851B52F79BEB000852A3A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = TXL2BSFRST;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E5F851B62F79BEB000852A3A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = TXL2BSFRST;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		E5F851B82F79BEB000852A3A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TXL2BSFRST;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Trabant/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.gsdv.Trabant;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		E5F851B92F79BEB000852A3A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TXL2BSFRST;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Trabant/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.gsdv.Trabant;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		F100000A2F79BEAE00852A3A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TXL2BSFRST;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@loader_path/../Frameworks",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.gsdv.TrabantTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Trabant.app/Contents/MacOS/Trabant";
+				TEST_TARGET_NAME = Trabant;
+			};
+			name = Debug;
+		};
+		F100000B2F79BEAE00852A3A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TXL2BSFRST;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@loader_path/../Frameworks",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.gsdv.TrabantTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Trabant.app/Contents/MacOS/Trabant";
+				TEST_TARGET_NAME = Trabant;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E5F851A72F79BEAE00852A3A /* Build configuration list for PBXProject "Trabant" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E5F851B52F79BEB000852A3A /* Debug */,
+				E5F851B62F79BEB000852A3A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E5F851B72F79BEB000852A3A /* Build configuration list for PBXNativeTarget "Trabant" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E5F851B82F79BEB000852A3A /* Debug */,
+				E5F851B92F79BEB000852A3A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F100000D2F79BEAE00852A3A /* Build configuration list for PBXNativeTarget "TrabantTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F100000A2F79BEAE00852A3A /* Debug */,
+				F100000B2F79BEAE00852A3A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AA0000012F79BEAE00852A3A /* XCRemoteSwiftPackageReference "swift-nio" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-nio.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.65.0;
+			};
+		};
+		AA0000022F79BEAE00852A3A /* XCRemoteSwiftPackageReference "swift-nio-ssl" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-nio-ssl.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.25.0;
+			};
+		};
+		AA0000032F79BEAE00852A3A /* XCRemoteSwiftPackageReference "swift-certificates" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-certificates.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		AA0000042F79BEAE00852A3A /* XCRemoteSwiftPackageReference "swift-crypto" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-crypto.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		AA0000052F79BEAE00852A3A /* XCRemoteSwiftPackageReference "swift-asn1" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-asn1.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		AA0000062F79BEAE00852A3A /* XCRemoteSwiftPackageReference "swift-nio-http2" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-nio-http2.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BB0000012F79BEAE00852A3A /* NIOCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA0000012F79BEAE00852A3A /* XCRemoteSwiftPackageReference "swift-nio" */;
+			productName = NIOCore;
+		};
+		BB0000022F79BEAE00852A3A /* NIOPosix */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA0000012F79BEAE00852A3A /* XCRemoteSwiftPackageReference "swift-nio" */;
+			productName = NIOPosix;
+		};
+		BB0000032F79BEAE00852A3A /* NIOHTTP1 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA0000012F79BEAE00852A3A /* XCRemoteSwiftPackageReference "swift-nio" */;
+			productName = NIOHTTP1;
+		};
+		BB0000042F79BEAE00852A3A /* NIOFoundationCompat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA0000012F79BEAE00852A3A /* XCRemoteSwiftPackageReference "swift-nio" */;
+			productName = NIOFoundationCompat;
+		};
+		BB0000052F79BEAE00852A3A /* NIOSSL */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA0000022F79BEAE00852A3A /* XCRemoteSwiftPackageReference "swift-nio-ssl" */;
+			productName = NIOSSL;
+		};
+		BB0000062F79BEAE00852A3A /* X509 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA0000032F79BEAE00852A3A /* XCRemoteSwiftPackageReference "swift-certificates" */;
+			productName = X509;
+		};
+		BB0000072F79BEAE00852A3A /* Crypto */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA0000042F79BEAE00852A3A /* XCRemoteSwiftPackageReference "swift-crypto" */;
+			productName = Crypto;
+		};
+		BB0000082F79BEAE00852A3A /* SwiftASN1 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA0000052F79BEAE00852A3A /* XCRemoteSwiftPackageReference "swift-asn1" */;
+			productName = SwiftASN1;
+		};
+		BB0000092F79BEAE00852A3A /* NIOHTTP2 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA0000062F79BEAE00852A3A /* XCRemoteSwiftPackageReference "swift-nio-http2" */;
+			productName = NIOHTTP2;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = E5F851A42F79BEAE00852A3A /* Project object */;
+}
