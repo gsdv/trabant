@@ -4,7 +4,8 @@ import Foundation
 @Observable
 final class CaptureStore {
     var devices: [DeviceRecord] = []
-    var sessions: [ProxySession] = []
+    private(set) var sessions: [ProxySession] = []
+    private(set) var visibleSessions: [DisplayedProxySession] = []
 
     private static let deviceNicknamesKey = "me.gsdv.Trabant.DeviceNicknames"
 
@@ -13,21 +14,26 @@ final class CaptureStore {
     private let repeatedMediaWindow: TimeInterval = 2
     private let repeatedTunnelWindow: TimeInterval = 5
 
-    var visibleSessions: [DisplayedProxySession] {
-        compactForDisplay(sessions)
-    }
+    @ObservationIgnored private var pendingAdds: [ProxySession] = []
+    @ObservationIgnored private var pendingUpdates: [ProxySession] = []
+    @ObservationIgnored private var flushTask: Task<Void, Never>?
 
     func addSession(_ session: ProxySession) {
-        sessions.insert(session, at: 0)
-        trimIfNeeded()
-        updateDevice(for: session)
+        pendingAdds.append(session)
+        scheduleFlush()
     }
 
     func updateSession(_ session: ProxySession) {
-        if let idx = sessions.firstIndex(where: { $0.id == session.id }) {
-            sessions[idx] = session
+        if let idx = pendingAdds.firstIndex(where: { $0.id == session.id }) {
+            pendingAdds[idx] = session
+            return
         }
-        updateDevice(for: session)
+        if let idx = pendingUpdates.firstIndex(where: { $0.id == session.id }) {
+            pendingUpdates[idx] = session
+        } else {
+            pendingUpdates.append(session)
+        }
+        scheduleFlush()
     }
 
     func sessionsForDevice(_ deviceIP: String) -> [ProxySession] {
@@ -35,21 +41,37 @@ final class CaptureStore {
     }
 
     func visibleSessionsForDevice(_ deviceIP: String) -> [DisplayedProxySession] {
-        compactForDisplay(sessionsForDevice(deviceIP))
+        visibleSessions.filter { $0.session.deviceIP == deviceIP }
     }
 
     func clearAll() {
+        flushTask?.cancel()
+        flushTask = nil
+        pendingAdds.removeAll()
+        pendingUpdates.removeAll()
         sessions.removeAll()
         devices.removeAll()
+        visibleSessions.removeAll()
     }
 
     func removeDisplayedSession(_ displayedSession: DisplayedProxySession) {
-        sessions.removeAll { displayedSession.representedSessionIDs.contains($0.id) }
+        let idsToRemove = displayedSession.representedSessionIDs
+        pendingAdds.removeAll { idsToRemove.contains($0.id) }
+        pendingUpdates.removeAll { idsToRemove.contains($0.id) }
+        sessions.removeAll { idsToRemove.contains($0.id) }
         rebuildDevices()
+        visibleSessions = compactForDisplay(sessions)
     }
 
     func session(id: UUID) -> ProxySession? {
         sessions.first { $0.id == id }
+    }
+
+    /// Force-flush any buffered adds/updates synchronously.
+    func flushPendingChanges() {
+        flushTask?.cancel()
+        flushTask = nil
+        applyPendingChanges()
     }
 
     func renameDevice(_ ip: String, to name: String?) {
@@ -67,6 +89,43 @@ final class CaptureStore {
             nicknames.removeValue(forKey: ip)
         }
         UserDefaults.standard.set(nicknames, forKey: Self.deviceNicknamesKey)
+    }
+
+    // MARK: - Batching
+
+    private func scheduleFlush() {
+        guard flushTask == nil else { return }
+        flushTask = Task { [weak self] in
+            try? await Task.sleep(for: .milliseconds(150))
+            guard !Task.isCancelled else { return }
+            self?.applyPendingChanges()
+        }
+    }
+
+    private func applyPendingChanges() {
+        flushTask = nil
+        guard !pendingAdds.isEmpty || !pendingUpdates.isEmpty else { return }
+
+        if !pendingAdds.isEmpty {
+            sessions.insert(contentsOf: pendingAdds.reversed(), at: 0)
+            for session in pendingAdds {
+                updateDevice(for: session)
+            }
+            pendingAdds.removeAll(keepingCapacity: true)
+        }
+
+        if !pendingUpdates.isEmpty {
+            for update in pendingUpdates {
+                if let idx = sessions.firstIndex(where: { $0.id == update.id }) {
+                    sessions[idx] = update
+                }
+                updateDevice(for: update)
+            }
+            pendingUpdates.removeAll(keepingCapacity: true)
+        }
+
+        trimIfNeeded()
+        visibleSessions = compactForDisplay(sessions)
     }
 
     private func persistedNicknames() -> [String: String] {

@@ -44,6 +44,7 @@ final class AppState {
     let captureStore = CaptureStore()
 
     private var proxyServer: ProxyServer?
+    private var sessionAccumulator: SessionAccumulator?
     private(set) var certificateAuthority: CertificateAuthority?
     private var certFileServer: CertificateFileServer?
 
@@ -70,7 +71,8 @@ final class AppState {
         proxyError = nil
         refreshLocalIP()
 
-        let store = captureStore
+        let accumulator = SessionAccumulator(store: captureStore)
+        sessionAccumulator = accumulator
         let ca = certificateAuthority
         let port = proxyPort
 
@@ -79,14 +81,10 @@ final class AppState {
                 let server = ProxyServer(
                     certificateAuthority: ca,
                     onSessionCaptured: { session in
-                        Task { @MainActor in
-                            store.addSession(session)
-                        }
+                        accumulator.captured(session)
                     },
                     onSessionUpdated: { session in
-                        Task { @MainActor in
-                            store.updateSession(session)
-                        }
+                        accumulator.updated(session)
                     }
                 )
                 try await server.start(port: port)
@@ -110,6 +108,7 @@ final class AppState {
         guard isProxyRunning else { return }
         let server = proxyServer
         proxyServer = nil
+        sessionAccumulator = nil
         isProxyRunning = false
 
         Task.detached {

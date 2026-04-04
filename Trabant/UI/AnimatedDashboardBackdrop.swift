@@ -39,7 +39,7 @@ struct AnimatedDashboardBackdrop: View {
 
     var body: some View {
         GeometryReader { geometry in
-            TimelineView(.periodic(from: .now, by: 1.0 / 24.0)) { timeline in
+            TimelineView(.periodic(from: .now, by: 1.0 / 8.0)) { timeline in
                 let time = timeline.date.timeIntervalSinceReferenceDate
 
                 ZStack {

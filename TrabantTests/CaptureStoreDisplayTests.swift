@@ -31,6 +31,7 @@ final class CaptureStoreDisplayTests: XCTestCase {
                 failureReason: "Client previously rejected the MITM certificate for this host. Using a raw CONNECT tunnel."
             )
         )
+        store.flushPendingChanges()
 
         let visible = store.visibleSessions
         XCTAssertEqual(visible.count, 1)
@@ -66,6 +67,7 @@ final class CaptureStoreDisplayTests: XCTestCase {
                 captureMode: .mitm
             )
         )
+        store.flushPendingChanges()
 
         let visible = store.visibleSessions
         XCTAssertEqual(visible.count, 1)
