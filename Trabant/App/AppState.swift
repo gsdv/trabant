@@ -24,6 +24,7 @@ enum CertificateStatus: Sendable {
 @Observable
 final class AppState {
     private static let debugLoggingDefaultsKey = "me.gsdv.Trabant.DebugLoggingEnabled"
+    private static let redactedModeDefaultsKey = "me.gsdv.Trabant.RedactedModeEnabled"
 
     var isProxyRunning = false
     var localIP: String = "–"
@@ -33,6 +34,11 @@ final class AppState {
         didSet {
             ProxyLogger.isVerboseEnabled = debugLoggingEnabled
             UserDefaults.standard.set(debugLoggingEnabled, forKey: AppState.debugLoggingDefaultsKey)
+        }
+    }
+    var redactedModeEnabled: Bool = UserDefaults.standard.object(forKey: AppState.redactedModeDefaultsKey) as? Bool ?? false {
+        didSet {
+            UserDefaults.standard.set(redactedModeEnabled, forKey: AppState.redactedModeDefaultsKey)
         }
     }
     var certificateStatus: CertificateStatus = .notGenerated

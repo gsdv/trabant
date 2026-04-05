@@ -34,7 +34,7 @@ struct SidebarDevicesView: View {
                                     lastSeen: device.lastSeenAt,
                                     isSelected: appState.selectedDeviceIP == device.ipAddress,
                                     symbolName: symbolName(for: device.displayName, ip: device.ipAddress),
-                                    subtitle: device.ipAddress
+                                    subtitle: appState.redactedModeEnabled ? Redactor.redactIP(device.ipAddress) : device.ipAddress
                                 ) {
                                     appState.selectedDeviceIP = device.ipAddress
                                 }
@@ -88,7 +88,7 @@ struct SidebarDevicesView: View {
             }
         } message: {
             if let ip = renamingDeviceIP {
-                Text("Enter a name for \(ip)")
+                Text("Enter a name for \(appState.redactedModeEnabled ? Redactor.redactIP(ip) : ip)")
             }
         }
     }
@@ -136,13 +136,14 @@ struct SidebarDevicesView: View {
     }
 
     private var sidebarStatusText: String {
+        let ip = appState.redactedModeEnabled ? Redactor.redactIP(appState.localIP) : appState.localIP
         if appState.isProxyRunning {
-            return "Listening on \(appState.localIP):\(appState.proxyPort)"
+            return "Listening on \(ip):\(appState.proxyPort)"
         }
         if appState.localIP == "No network" {
             return "Proxy stopped"
         }
-        return "Ready on \(appState.localIP):\(appState.proxyPort)"
+        return "Ready on \(ip):\(appState.proxyPort)"
     }
 
     private func symbolName(for deviceName: String, ip: String) -> String {

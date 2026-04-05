@@ -32,7 +32,8 @@ struct DetachedRequestDetailView: View {
 
     private var windowTitle: String {
         guard let session else { return "Request Detail" }
-        let title = "\(session.method) \(session.host)\(session.path)"
+        let path = appState.redactedModeEnabled ? Redactor.redactURL(session.path) : session.path
+        let title = "\(session.method) \(session.host)\(path)"
         return String(title.prefix(90))
     }
 
@@ -51,6 +52,7 @@ struct DetachedRequestDetailView: View {
 }
 
 private struct DetailContent: View {
+    @Environment(AppState.self) var appState
     let session: ProxySession
     @State private var selectedTab = 0
 
@@ -122,7 +124,7 @@ private struct DetailContent: View {
                 }
             }
 
-            Text(session.url)
+            Text(appState.redactedModeEnabled ? Redactor.redactURL(session.url) : session.url)
                 .font(.system(size: 12, design: .monospaced))
                 .foregroundStyle(TrabantTheme.primaryText)
                 .lineLimit(2)
@@ -150,22 +152,24 @@ private struct DetailContent: View {
         .background(TrabantTheme.windowBackground.opacity(0.5))
     }
 
+    private var redacted: Bool { appState.redactedModeEnabled }
+
     private var requestContent: some View {
         VStack(alignment: .leading, spacing: 12) {
             SectionHeader("Request Line")
-            MonoText("\(session.method) \(session.path) \(httpVersionLabel(for: session.requestProtocol))")
+            MonoText("\(session.method) \(redacted ? Redactor.redactURL(session.path) : session.path) \(httpVersionLabel(for: session.requestProtocol))")
 
             SectionHeader("Headers")
-            MonoText(BodyFormatter.formatHeaders(session.requestHeaders))
+            MonoText(BodyFormatter.formatHeaders(redacted ? Redactor.redactHeaders(session.requestHeaders) : session.requestHeaders))
 
             SectionHeader("Body")
-            MonoText(
+            MonoText(redactIfNeeded(
                 BodyFormatter.format(
                     data: session.requestBody,
                     mimeType: requestContentType,
                     contentEncoding: BodyFormatter.headerValue("content-encoding", in: session.requestHeaders)
                 )
-            )
+            ))
         }
     }
 
@@ -180,22 +184,26 @@ private struct DetailContent: View {
             if session.responseHeaders.isEmpty {
                 MonoText("(no headers)")
             } else {
-                MonoText(BodyFormatter.formatHeaders(session.responseHeaders))
+                MonoText(BodyFormatter.formatHeaders(redacted ? Redactor.redactHeaders(session.responseHeaders) : session.responseHeaders))
             }
 
             SectionHeader("Body")
-            MonoText(
+            MonoText(redactIfNeeded(
                 BodyFormatter.format(
                     data: session.responseBody,
                     mimeType: session.mimeType,
                     contentEncoding: BodyFormatter.headerValue("content-encoding", in: session.responseHeaders)
                 )
-            )
+            ))
         }
     }
 
     private var requestContentType: String? {
         session.requestHeaders.first(where: { $0.0.lowercased() == "content-type" })?.1
+    }
+
+    private func redactIfNeeded(_ text: String) -> String {
+        redacted ? Redactor.redactBodyText(text) : text
     }
 
     private func httpVersionLabel(for requestProtocol: String) -> String {

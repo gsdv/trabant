@@ -196,13 +196,14 @@ struct RootView: View {
     }
 
     private var statusSecondaryLabel: String {
+        let ip = appState.redactedModeEnabled ? Redactor.redactIP(appState.localIP) : appState.localIP
         if appState.isProxyRunning {
-            return "Listening on \(appState.localIP):\(appState.proxyPort)"
+            return "Listening on \(ip):\(appState.proxyPort)"
         }
         if appState.localIP == "No network" {
             return "Proxy stopped"
         }
-        return "Ready on \(appState.localIP):\(appState.proxyPort)"
+        return "Ready on \(ip):\(appState.proxyPort)"
     }
 
     private func toggleDevicesSidebar() {
@@ -431,6 +432,14 @@ private struct TitlebarTrailingControlsView: View {
                     )
             }
             .buttonStyle(.plain)
+
+            TitlebarIconButton(
+                systemName: appState.redactedModeEnabled ? "eye.slash.fill" : "eye.slash",
+                tint: appState.redactedModeEnabled ? TrabantTheme.accentLight : TrabantTheme.secondaryText,
+                helpText: "Redacted mode"
+            ) {
+                appState.redactedModeEnabled.toggle()
+            }
 
             TitlebarIconButton(
                 systemName: appState.debugLoggingEnabled ? "ladybug.fill" : "ladybug",

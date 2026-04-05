@@ -122,7 +122,7 @@ struct CertificateView: View {
             }
 
             HStack(spacing: 12) {
-                metricTile(title: "Mac Address", value: appState.localIP)
+                metricTile(title: "Mac Address", value: appState.redactedModeEnabled ? Redactor.redactIP(appState.localIP) : appState.localIP)
                 metricTile(title: "Proxy Port", value: "\(appState.proxyPort)")
                 metricTile(title: "Download Port", value: "\(appState.certServerPort)")
             }
@@ -144,7 +144,7 @@ struct CertificateView: View {
                                 .font(.system(size: 12, weight: .semibold))
                                 .foregroundStyle(TrabantTheme.secondaryText)
 
-                            Text(url)
+                            Text(appState.redactedModeEnabled ? Redactor.redactIPsInText(url) : url)
                                 .font(.system(size: 13, design: .monospaced))
                                 .foregroundStyle(TrabantTheme.accentLight)
                                 .textSelection(.enabled)
@@ -277,7 +277,7 @@ struct CertificateView: View {
                             .fixedSize(horizontal: false, vertical: true)
 
                         if let url = appState.certDownloadURL {
-                            Text(url)
+                            Text(appState.redactedModeEnabled ? Redactor.redactIPsInText(url) : url)
                                 .font(.system(size: 15, weight: .semibold, design: .monospaced))
                                 .foregroundStyle(TrabantTheme.accentLight)
                                 .textSelection(.enabled)
@@ -495,7 +495,7 @@ struct CertificateView: View {
 
     private var proxyConfigurationCard: some View {
         VStack(alignment: .leading, spacing: 12) {
-            proxyConfigurationRow(label: "Server", value: appState.localIP)
+            proxyConfigurationRow(label: "Server", value: appState.redactedModeEnabled ? Redactor.redactIP(appState.localIP) : appState.localIP)
             proxyConfigurationRow(label: "Port", value: "\(appState.proxyPort)")
             proxyConfigurationRow(label: "Authentication", value: "No")
         }

@@ -175,6 +175,7 @@ private struct InteractiveRequestRow: View {
 }
 
 private struct RequestRow: View {
+    @Environment(AppState.self) var appState
     let session: ProxySession
     let collapsedCount: Int
     let isSelected: Bool
@@ -209,7 +210,7 @@ private struct RequestRow: View {
                     .font(.system(size: 12, weight: .medium))
                     .foregroundStyle(TrabantTheme.primaryText)
                     .lineLimit(1)
-                Text(session.path)
+                Text(appState.redactedModeEnabled ? Redactor.redactURL(session.path) : session.path)
                     .font(.system(size: 11, design: .monospaced))
                     .foregroundStyle(TrabantTheme.secondaryText)
                     .lineLimit(1)
